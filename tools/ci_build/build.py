@@ -1389,10 +1389,10 @@ def build_python_wheel(
 
 
 def build_protoc_for_host(cmake_path, source_dir, build_dir, args):
-    if (args.arm or args.arm64) and (not is_windows() and not args.ios):
+    if (args.arm or args.arm64 or args.enable_windows_store) and (not is_windows() and not args.ios):
         raise BuildError(
             'Currently only support building protoc for Windows host while '
-            'cross-compiling for ARM/ARM64 arch and linux cross-compiling iOS')
+            'cross-compiling for ARM/ARM64/Store and linux cross-compiling iOS')
 
     log.info(
         "Building protoc for host to be used in cross-compiled build process")
